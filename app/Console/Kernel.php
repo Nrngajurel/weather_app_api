@@ -20,7 +20,7 @@ class Kernel extends ConsoleKernel
         //dispach featchweatherjob 4 times a day
         $schedule->call(function () {
             FetchWeatherJob::dispatch();
-        })->everyMinute();
+        })->everySixHours();
     }
 
     /**
