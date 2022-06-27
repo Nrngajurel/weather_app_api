@@ -56,7 +56,7 @@ return new class extends Migration
             $table->integer('temp');
             $table->integer('dew');
             $table->integer('humidity');
-            $table->integer('snow');
+            $table->integer('snow')->nullable();
             $table->string('sunrise');
             $table->string('sunset');
             $table->string('conditions');

@@ -13,7 +13,7 @@ class UpdateWeatherRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class UpdateWeatherRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'address_id' => 'required|exists:addresses,id',
+            'date' => 'required|date',
+            'temp_max' => 'required|numeric',
+            'temp_min' => 'required|numeric',
+            'temp' => 'required|numeric',
+            'dew' => 'required|numeric',
+            'humidity' => 'required|numeric',
+            'snow' => 'required|numeric',
+            'sunrise' => 'required|string|max:255',
+            'sunset' => 'required|string|max:255',
+            'conditions' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
         ];
     }
 }

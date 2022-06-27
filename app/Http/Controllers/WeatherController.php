@@ -24,6 +24,8 @@ class WeatherController extends Controller
         $address = Address::find($request->address_id);
         try {
             $weather = $address->weather()->create($request->all());
+
+            return response()->json($weather, 201);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
