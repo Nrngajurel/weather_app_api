@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\WeatherController;
+use App\Jobs\FetchWeatherJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('/address', AddressController::class);
+
+// weather by address
+Route::get('/weather/{address:address}', [WeatherController::class, 'weatherByAddress']);
+Route::get('/weather/{address:address}/{date?}', [WeatherController::class, 'weatherByAddressDate']);
+Route::apiResource('/weather', WeatherController::class)->except(['index','show']);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\FetchWeatherJob;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    FetchWeatherJob::dispatch();
     return ['Laravel' => app()->version()];
 });
 
